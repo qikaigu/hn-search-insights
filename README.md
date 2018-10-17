@@ -12,6 +12,10 @@ Install required libraries
 
 ```pipenv install```
 
+To test
+
+```python -m unittest discover```
+
 
 **`build` mode** (a)
 
