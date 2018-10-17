@@ -37,6 +37,7 @@ class TrendDetector:
             self.model[query] = {'mean': mean, 'std': std}
 
         pickle.dump(self.model, open(self.model_path, 'wb'))
+        print("Model successfully built.")
 
     def load_model(self):
         """
@@ -44,13 +45,15 @@ class TrendDetector:
         :return:
         """
         self.model = pickle.load(open(self.model_path, 'rb'))
+        print("Model successfully loaded.")
 
-    def is_trending(self, query, obs, threshold=2.0):
+    def is_trending(self, query, obs, threshold=2.0, verbose=False):
         """
         For a given query and the search count of a target day, print if it is a trending search.
         :param query: query of the search
         :param obs: search count of a target day
         :param threshold: trending threshold
+        :param verbose: if True, print trending result, otherwise, only print if it is a trending search
         :return:
         """
         mean_std = self.model[query]
@@ -60,6 +63,6 @@ class TrendDetector:
             return 0
         z_score = 0 if std == 0 else (obs - mean) / std
         if z_score >= threshold:
-            print('Query {}({:2f}) is a trending search for the given observation.'.format(query, z_score))
-        else:
-            print('Query {}({:2f}) is not a trending search for the given observation.'.format(query, z_score))
+            print('Query: [{}]({:2f}) is a trending search for the given observation.'.format(query, z_score))
+        elif verbose:
+            print('Query: [{}]({:2f}) is not a trending search for the given observation.'.format(query, z_score))
