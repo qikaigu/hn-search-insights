@@ -1,5 +1,5 @@
 input:
-  input/hn_insights.data.zip
+  input/hn_insights_data.zip
 
 model:
   model/model.pkl
