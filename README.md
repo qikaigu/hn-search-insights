@@ -17,12 +17,12 @@ To test
 ```python -m unittest discover```
 
 
-**`build` mode** (a)
+**`build` mode**
 
 1. Download the provided data and put it in the `input` folder
 2. Run the Python program with build mode `$ python main.py -mode build`, a model will be built based on 28-day-window data and a list of trending searches on the latest day (2018-07-14) will be displayed.
 
-**`detect` mode** (b)
+**`detect` mode**
 
 1. Run the Python program with detect mode by providing a query and an observation `$ python main.py -mode detect -query bitcoin -obs 100`. It determines if the observation is considered as a trending search.
 
