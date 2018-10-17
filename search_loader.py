@@ -7,12 +7,9 @@ import pandas as pd
 
 class SearchLoader:
 
-    def __init__(self, input_file=None):
-        if input_file is None:
-            self.input_file = 'input/hn_insights_data.zip'
-        elif os.path.isfile(input_file):
-            self.input_file = input_file
-        else:
+    def __init__(self, config):
+        self.input_file = config['input']
+        if not os.path.isfile(self.input_file):
             raise Exception("Input file doesn't exist.")
 
     def load(self):
